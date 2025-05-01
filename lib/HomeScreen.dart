@@ -4,6 +4,7 @@ import 'package:islami/Tabs/Ahadith_tab.dart';
 import 'package:islami/Tabs/Quran_tab.dart';
 import 'package:islami/Tabs/Radio_tab.dart';
 import 'package:islami/Tabs/Sebha_tab.dart';
+import 'package:islami/Tabs/Settings.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentTab = 3;
-  List<Widget> Tabs = [RadioTab(), SebhaTab(), AhadithTab(), QuranTab()];
+  List<Widget> Tabs = [RadioTab(), SebhaTab(), AhadithTab(), QuranTab(),settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +57,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: ImageIcon(AssetImage("assets/images/quran_icon.png")),
                 label: 'القرآن',
                 backgroundColor: MyThemeData.Cprime,
-              ), //quran
+              ),//quran
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'الاعدادات',
+                backgroundColor: MyThemeData.Cprime,
+              ),//settings
             ],
           ),
           body: Tabs[currentTab],

@@ -3,6 +3,10 @@ import 'package:islami/Ahadith_detailz.dart';
 import 'package:islami/HomeScreen.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/Sora_detailz.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 main() {
   runApp(MyApp());
@@ -13,7 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var pro = Provider.of<MyProvider>(context);
     return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('ar'), // Arabic
+      ],
+      locale: Locale('en'),
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routeName: (buildContext) => HomeScreen(),
@@ -25,3 +39,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
