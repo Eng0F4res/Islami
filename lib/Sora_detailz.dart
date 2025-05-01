@@ -20,8 +20,17 @@ class _SoraDetailzState extends State<SoraDetailz> {
     String file = await rootBundle.loadString(
         'assets/files/quran/sura_${(index + 1).toString().padLeft(3, '0')}.txt'
     );
-    List<String> lines = file.split('\n');
-    verses = lines;
+    List<String> lines = file.trim().split('\n');
+    List<String> formattedLines = [];
+
+    for (int i = 0; i < lines.length; i++) {
+      String formattedLine = lines[i].trim();
+      formattedLine += ' \u06DD${_toArabicNumber(i + 1)}'; // ۝ + Arabic number
+      formattedLines.add(formattedLine);
+    }
+
+    String allLines = formattedLines.join(' ');
+    verses = [allLines];
     setState(() {});
   }
 
@@ -74,26 +83,24 @@ class _SoraDetailzState extends State<SoraDetailz> {
                         endIndent: 100,
                       ),
                       Expanded(
-                        child: ListView.separated(
+                        child: ListView.builder(
                           itemBuilder: (context, index) {
-                            return Text(
-                              '${verses[index]}',
-                              textDirection: TextDirection.rtl,
-                              textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodySmall
-                                  ?.copyWith(fontFamily: 'AmiriQuran',color: isDark? MyThemeData.Cyellow:MyThemeData.Cblack,),
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Text(
+                                verses[index], // This is the single long string
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.right,
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  fontFamily: 'AmiriQuran',
+                                  color: isDark ? MyThemeData.Cyellow : MyThemeData.Cblack,
+                                ),
+                              ),
                             );
                           },
-                          separatorBuilder: (context, index) {
-                            return Divider(
-                              thickness: 2,
-                              endIndent: 70,
-                              indent: 70,
-                            );
-                          },
-                          itemCount: verses.length,
+                          itemCount: verses.length, // This is 1
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -103,5 +110,9 @@ class _SoraDetailzState extends State<SoraDetailz> {
         ),
       ),
     );
+  }
+  String _toArabicNumber(int number) {
+    const arabicNumbers = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+    return number.toString().split('').map((e) => arabicNumbers[int.parse(e)]).join();
   }
 }
