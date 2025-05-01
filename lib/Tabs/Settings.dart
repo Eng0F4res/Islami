@@ -3,6 +3,8 @@ import 'package:islami/Language_BSheet.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/Theme_BSheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:islami/providers/my_provider.dart';
 
 class settings extends StatefulWidget {
   const settings({super.key});
@@ -14,6 +16,7 @@ class settings extends StatefulWidget {
 class _settingsState extends State<settings> {
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -28,11 +31,11 @@ class _settingsState extends State<settings> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(55),
-                border: Border.all(width: 2, color: MyThemeData.Cprime),
+                border: Border.all(width: 2, color: MyThemeData.Cbage),
               ),
               child: Row(
                 children: [
-                  Text('English'),
+                  pro.LanguageCode=='en'?Text('English'):Text('لعربيه'),
                   Spacer(),
                   Icon(Icons.arrow_drop_down),
                 ],
@@ -49,7 +52,7 @@ class _settingsState extends State<settings> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(55),
-                border: Border.all(width: 2, color: MyThemeData.Cprime),
+                border: Border.all(width: 2, color: MyThemeData.Cbage),
               ),
               child: Row(
                 children: [
@@ -64,9 +67,9 @@ class _settingsState extends State<settings> {
       ),
     );
   }
-
   SBSlangue(BuildContext context) {
     showModalBottomSheet(
+      isScrollControlled: false,
         shape: OutlineInputBorder(
           borderSide: BorderSide(width: 0,color: Colors.transparent),
           borderRadius: BorderRadius.only(
@@ -77,9 +80,9 @@ class _settingsState extends State<settings> {
         context: context,
         builder: (context) => LanBSheet());
   }
-
   SBSTheme(BuildContext context) {
     showModalBottomSheet(
+        isScrollControlled: false,
         shape: OutlineInputBorder(
             borderSide: BorderSide(width: 0,color: Colors.transparent),
             borderRadius: BorderRadius.only(

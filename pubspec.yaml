@@ -93,6 +93,9 @@ flutter:
    - family: DecoTypeThuluth
      fonts:
        - asset: assets/fonts/DecoTypeThuluth.TTF
+   - family: AmiriQuran
+     fonts:
+       - asset: assets/fonts/AmiriQuran-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

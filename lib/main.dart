@@ -9,7 +9,12 @@ import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
 
 main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => MyProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,17 +22,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var pro = Provider.of<MyProvider>(context);
+    var pro = Provider.of<MyProvider>(context);
     return MaterialApp(
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
         Locale('en'), // English
         Locale('ar'), // Arabic
       ],
-      locale: Locale('en'),
+      locale: Locale(pro.LanguageCode),
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routeName: (buildContext) => HomeScreen(),
@@ -36,6 +43,8 @@ class MyApp extends StatelessWidget {
       },
       initialRoute: HomeScreen.routeName,
       theme: MyThemeData.LightTheme,
+      darkTheme: MyThemeData.darkTheme,
+      themeMode: pro.modeApp,
     );
   }
 }

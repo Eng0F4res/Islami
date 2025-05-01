@@ -23,9 +23,9 @@ class _AhadithTabState extends State<AhadithTab> {
       child: Column(
         children: [
           Image.asset('assets/images/ahadeth_image.png'),
-          Divider(color: MyThemeData.Cprime, thickness: 3),
+          Divider(thickness: 3),
           Text('الأحاديث', style: Theme.of(context).textTheme.bodyMedium),
-          Divider(color: MyThemeData.Cprime, thickness: 3),
+          Divider(thickness: 3),
           Expanded(
             child: ListView.separated(
               itemBuilder: (context, index) {
@@ -48,7 +48,6 @@ class _AhadithTabState extends State<AhadithTab> {
               },
               separatorBuilder: (context, index) {
                 return Divider(
-                  color: MyThemeData.Cprime,
                   thickness: 2,
                   endIndent: 60,
                   indent: 60,

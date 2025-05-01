@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:islami/Ahadith_Module.dart';
 import 'package:islami/My_Theme_Data.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class AhadithDetailz extends StatelessWidget {
   static const String routeNames = 'AhadithDetailz';
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     ahadithmodule args =
         ModalRoute.of(context)?.settings.arguments as ahadithmodule;
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
+            image: AssetImage(pro.changeBackground()),
             fit: BoxFit.fill,
           ),
         ),
@@ -43,7 +46,7 @@ class AhadithDetailz extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Divider(
-                      color: MyThemeData.Cprime,
+                      color: MyThemeData.Cbage,
                       thickness: 1,
                       indent: 70,
                       endIndent: 70,

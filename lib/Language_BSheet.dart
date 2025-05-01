@@ -23,12 +23,12 @@ class LanBSheet extends StatelessWidget {
               children: [
                 Text('English'),
                 Spacer(),
-                if (pro.LanguageCode == 'en') Icon(Icons.done),
+                pro.LanguageCode=='en'?Icon(Icons.done):Container()
               ],
             ),
           ),
           SizedBox(height: 5),
-          Divider(color: MyThemeData.Cprime,indent: 80,endIndent: 80,),
+          Divider(color: MyThemeData.Cbage,indent: 80,endIndent: 80,),
           InkWell(
             onTap: (){
               pro.changeLanguage('ar');
@@ -38,7 +38,7 @@ class LanBSheet extends StatelessWidget {
               children: [
               Text('Arabic'),
               Spacer(),
-              if (pro.LanguageCode == 'ar') Icon(Icons.done),
+                pro.LanguageCode=='ar'?Icon(Icons.done):Container()
               ],
             ),
           ),

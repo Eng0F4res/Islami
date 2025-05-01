@@ -5,6 +5,8 @@ import 'package:islami/Tabs/Quran_tab.dart';
 import 'package:islami/Tabs/Radio_tab.dart';
 import 'package:islami/Tabs/Sebha_tab.dart';
 import 'package:islami/Tabs/Settings.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -19,10 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
+    bool isDark = pro.modeApp == ThemeMode.dark;
     return Stack(
       children: [
         Image.asset(
-          "assets/images/background.png",
+          pro.changeBackground(),
           fit: BoxFit.fill,
           width: double.infinity,
         ),
@@ -41,27 +45,27 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/radio_icon.png")),
                 label: 'الراديو',
-                backgroundColor: MyThemeData.Cprime,
+                backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //radio
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/sebha_icon.png")),
                 label: 'التسبيح',
-                backgroundColor: MyThemeData.Cprime,
+                backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //sbha
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/ahadith_icon.png")),
                 label: 'الأحاديث',
-                backgroundColor: MyThemeData.Cprime,
+                backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //ahadith
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/quran_icon.png")),
                 label: 'القرآن',
-                backgroundColor: MyThemeData.Cprime,
+                backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ),//quran
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
                 label: 'الاعدادات',
-                backgroundColor: MyThemeData.Cprime,
+                backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ),//settings
             ],
           ),
