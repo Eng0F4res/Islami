@@ -11,6 +11,7 @@ class AhadithDetailz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
+    bool isDark = pro.modeApp == ThemeMode.dark;
     ahadithmodule args =
         ModalRoute.of(context)?.settings.arguments as ahadithmodule;
     return SafeArea(
@@ -24,7 +25,10 @@ class AhadithDetailz extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text(AppLocalizations.of(context)!.title, style: Theme.of(context).textTheme.bodyLarge),
+            title: Text(
+              AppLocalizations.of(context)!.title,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.only(
@@ -35,7 +39,7 @@ class AhadithDetailz extends StatelessWidget {
             ),
             child: Card(
               elevation: 7,
-              color: Color(0xCCFFFFFF),
+              color: isDark ? MyThemeData.Tcblue : MyThemeData.Tcwhit,
               child: Padding(
                 padding: const EdgeInsets.only(top: 22),
                 child: Column(
@@ -47,7 +51,6 @@ class AhadithDetailz extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Divider(
-                      color: MyThemeData.Cbage,
                       thickness: 1,
                       indent: 70,
                       endIndent: 70,
@@ -61,8 +64,15 @@ class AhadithDetailz extends StatelessWidget {
                               '${args.Content[index]}',
                               textDirection: TextDirection.rtl,
                               textAlign: TextAlign.right,
-                              style: Theme.of(context).textTheme.bodySmall
-                                  ?.copyWith(fontFamily: 'DecoTypeThuluth'),
+                              style: Theme.of(
+                                context,
+                              ).textTheme.bodySmall?.copyWith(
+                                fontFamily: 'DecoTypeThuluth',
+                                color:
+                                    isDark
+                                        ? MyThemeData.Cyellow
+                                        : MyThemeData.Cblack,
+                              ),
                             ),
                           );
                         },
