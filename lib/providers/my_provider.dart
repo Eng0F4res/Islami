@@ -20,4 +20,12 @@ class MyProvider extends ChangeNotifier{
       return 'assets/images/darkback.png';
     }
   }
+  String changeSebha() {
+    if (modeApp == ThemeMode.light) {
+      return 'assets/images/Sebha.png';
+    }
+    else {
+      return 'assets/images/Dark_Sebha.png';
+    }
+  }
 }

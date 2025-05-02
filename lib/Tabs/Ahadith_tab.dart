@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:islami/Ahadith_Module.dart';
 import 'package:islami/Ahadith_detailz.dart';
 import '../My_Theme_Data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AhadithTab extends StatefulWidget {
   const AhadithTab({super.key});
@@ -24,7 +25,7 @@ class _AhadithTabState extends State<AhadithTab> {
         children: [
           Image.asset('assets/images/ahadeth_image.png'),
           Divider(thickness: 3),
-          Text('الأحاديث', style: Theme.of(context).textTheme.bodyMedium),
+          Text(AppLocalizations.of(context)!.ahadith, style: Theme.of(context).textTheme.bodyMedium),
           Divider(thickness: 3),
           Expanded(
             child: ListView.separated(

@@ -5,6 +5,7 @@ import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/Sora_Module.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SoraDetailz extends StatefulWidget {
   static const String routeName = "SoraDetailz";
@@ -53,7 +54,7 @@ class _SoraDetailzState extends State<SoraDetailz> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('إسلامي', style: Theme.of(context).textTheme.bodyLarge),
+            title: Text(AppLocalizations.of(context)!.title, style: Theme.of(context).textTheme.bodyLarge),
           ),
           body: Align(
             alignment: Alignment.center,

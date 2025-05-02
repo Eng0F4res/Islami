@@ -96,6 +96,9 @@ flutter:
    - family: AmiriQuran
      fonts:
        - asset: assets/fonts/AmiriQuran-Regular.ttf
+   - family: MonotypeKoufi
+     fonts:
+       - asset: assets/fonts/MonotypeKoufi.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

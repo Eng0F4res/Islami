@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanBSheet extends StatelessWidget {
   const LanBSheet({super.key});
@@ -21,7 +22,7 @@ class LanBSheet extends StatelessWidget {
             },
             child: Row(
               children: [
-                Text('English'),
+                Text(AppLocalizations.of(context)!.english),
                 Spacer(),
                 pro.LanguageCode=='en'?Icon(Icons.done):Container()
               ],
@@ -36,7 +37,7 @@ class LanBSheet extends StatelessWidget {
             },
             child: Row(
               children: [
-              Text('Arabic'),
+              Text(AppLocalizations.of(context)!.arabic),
               Spacer(),
                 pro.LanguageCode=='ar'?Icon(Icons.done):Container()
               ],

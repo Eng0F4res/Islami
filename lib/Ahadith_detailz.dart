@@ -3,6 +3,7 @@ import 'package:islami/Ahadith_Module.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AhadithDetailz extends StatelessWidget {
   static const String routeNames = 'AhadithDetailz';
@@ -23,7 +24,7 @@ class AhadithDetailz extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('إسلامي', style: Theme.of(context).textTheme.bodyLarge),
+            title: Text(AppLocalizations.of(context)!.title, style: Theme.of(context).textTheme.bodyLarge),
           ),
           body: Padding(
             padding: const EdgeInsets.only(

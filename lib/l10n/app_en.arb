@@ -1,5 +1,16 @@
 {
   "title": "Islami",
   "suraNames": "Sura Names",
-  "languages": "Languages"
+  "ahadith": "El-Ahadith",
+  "languages": "Languages",
+  "arabic": "Arabic",
+  "english": "English",
+  "themes": "Themes",
+  "dark": "Dark",
+  "light": "Light",
+  "setting": "Settings",
+  "quran": "Quran",
+  "sbha": "Tsbeh",
+  "radio": "Radio",
+  "tsbeh": "Number of Tasbeehs"
 }

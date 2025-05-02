@@ -7,6 +7,7 @@ import 'package:islami/Tabs/Sebha_tab.dart';
 import 'package:islami/Tabs/Settings.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('إسلامي', style: Theme.of(context).textTheme.bodyLarge),
+            title: Text(AppLocalizations.of(context)!.title, style: Theme.of(context).textTheme.bodyLarge),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentTab,
@@ -44,27 +45,27 @@ class _HomeScreenState extends State<HomeScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/radio_icon.png")),
-                label: 'الراديو',
+                label: AppLocalizations.of(context)!.radio,
                 backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //radio
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/sebha_icon.png")),
-                label: 'التسبيح',
+                label: AppLocalizations.of(context)!.sbha,
                 backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //sbha
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/ahadith_icon.png")),
-                label: 'الأحاديث',
+                label: AppLocalizations.of(context)!.ahadith,
                 backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //ahadith
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/quran_icon.png")),
-                label: 'القرآن',
+                label: AppLocalizations.of(context)!.quran,
                 backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ),//quran
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: 'الاعدادات',
+                label: AppLocalizations.of(context)!.setting,
                 backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ),//settings
             ],

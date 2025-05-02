@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
 import 'My_Theme_Data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThemeBSheet extends StatelessWidget {
   const ThemeBSheet({super.key});
@@ -21,7 +22,7 @@ class ThemeBSheet extends StatelessWidget {
             },
             child: Row(
               children: [
-                Text('Light'),
+                Text(AppLocalizations.of(context)!.light),
                 Spacer(),
                 pro.modeApp==ThemeMode.light?Icon(Icons.done):Container()
               ],
@@ -36,7 +37,7 @@ class ThemeBSheet extends StatelessWidget {
             },
             child: Row(
               children: [
-                Text('Dark'),
+                Text(AppLocalizations.of(context)!.dark),
                 Spacer(),
                 pro.modeApp==ThemeMode.dark?Icon(Icons.done):Container()
               ],

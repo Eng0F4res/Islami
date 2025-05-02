@@ -9,6 +9,8 @@ class MyThemeData {
   static Color Cblue = Color(0xFF141A2E);
   static Color Tcblue = Color(0xCC141A2E);
   static Color Tcwhit = Color(0xCCF8F8F8);
+  static Color Scbage = Color(0x80B7935F);
+  static Color Scblue = Color(0xCC141A2E);
 
   static ThemeData LightTheme = ThemeData(
     colorScheme: ColorScheme(

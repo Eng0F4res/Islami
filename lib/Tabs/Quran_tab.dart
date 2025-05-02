@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/Sora_detailz.dart';
 import 'package:islami/Sora_Module.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> SoraNames = [
@@ -129,7 +130,7 @@ class QuranTab extends StatelessWidget {
         children: [
           Image.asset("assets/images/quran_image.png"),
           Divider(thickness: 3),
-          Text('اسم السورة', style: Theme.of(context).textTheme.bodyMedium),
+          Text(AppLocalizations.of(context)!.suraNames, style: Theme.of(context).textTheme.bodyMedium),
           Divider(thickness: 3),
           Expanded(
             child: ListView.separated(

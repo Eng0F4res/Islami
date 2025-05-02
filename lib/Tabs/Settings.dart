@@ -22,7 +22,7 @@ class _settingsState extends State<settings> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(AppLocalizations.of(context)!.languages),
+          Text("${AppLocalizations.of(context)!.languages} :"),
           InkWell(
             onTap: () => SBSlangue(context),
             child: Container(
@@ -35,7 +35,7 @@ class _settingsState extends State<settings> {
               ),
               child: Row(
                 children: [
-                  pro.LanguageCode=='en'?Text('English'):Text('لعربيه'),
+                  pro.LanguageCode=='en'?Text(AppLocalizations.of(context)!.english):Text(AppLocalizations.of(context)!.arabic),
                   Spacer(),
                   Icon(Icons.arrow_drop_down),
                 ],
@@ -43,7 +43,7 @@ class _settingsState extends State<settings> {
             ),
           ),
           SizedBox(height: 20),
-          Text('Theme :'),
+          Text('${AppLocalizations.of(context)!.themes} :'),
           InkWell(
             onTap: () => SBSTheme(context),
             child: Container(
@@ -56,7 +56,7 @@ class _settingsState extends State<settings> {
               ),
               child: Row(
                 children: [
-                  Text('Light'),
+                  pro.modeApp==ThemeMode.dark?Text(AppLocalizations.of(context)!.dark):Text(AppLocalizations.of(context)!.light),
                   Spacer(),
                   Icon(Icons.arrow_drop_down),
                 ],
