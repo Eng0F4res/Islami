@@ -12,5 +12,9 @@
   "quran": "Quran",
   "sbha": "Tsbeh",
   "radio": "Radio",
-  "tsbeh": "Number of Tasbeehs"
+  "tsbeh": "Number of Tasbeehs",
+  "radio0eg": "Qur'an Radio - Egypt",
+  "radio0ux": "Qur'an Radio - Uzbekistan",
+  "radio0om": "Qur'an Radio - Oman",
+  "radio0uae": "Qur'an Radio - UAE"
 }

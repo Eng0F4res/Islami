@@ -14,24 +14,26 @@ class RadioTab extends StatefulWidget {
 
 class _RadioTabState extends State<RadioTab> {
   int currentStationIndex = 0;
-  final List<Map<String, String>> radioStations = [
-    {
-      'title': 'إذاعة مصر لقرآن الكريم',
-      'url': 'https://n02.radiojar.com/8s5u5tpdtwzuv',
-    },
-    {
-      'title': 'إذاعة أوزبكستان للقرآن الكريم',
-      'url': 'https://radio.islom.uz/quranuz',
-    },
-    {
-      'title': 'ذاعة عمان للقرآن الكريم',
-      'url': 'https://partrdo.mangomolo.com/quranrdo.mp3',
-    },
-    {
-      'title': 'ذاعة الإمارات للقرآن الكريم',
-      'url': 'https://l3.itworkscdn.net/smcquranlive/quranradiolive/icecast.audio',
-    },
-  ];
+  List<Map<String, String>> getRadioStations() {
+    return [
+      {
+        'title': AppLocalizations.of(context)!.radio0eg,
+        'url': 'https://n02.radiojar.com/8s5u5tpdtwzuv',
+      },
+      {
+        'title': AppLocalizations.of(context)!.radio0ux,
+        'url': 'https://radio.islom.uz/quranuz',
+      },
+      {
+        'title': AppLocalizations.of(context)!.radio0om,
+        'url': 'https://partrdo.mangomolo.com/quranrdo.mp3',
+      },
+      {
+        'title': AppLocalizations.of(context)!.radio0uae,
+        'url': 'https://l3.itworkscdn.net/smcquranlive/quranradiolive/icecast.audio',
+      },
+    ];
+  }
   String stationTitle = '';
   bool isPlaying = false;
   final radio = RadioPlayer();
@@ -39,8 +41,13 @@ class _RadioTabState extends State<RadioTab> {
   @override
   void initState() {
     super.initState();
-    stationTitle = radioStations[currentStationIndex]['title']!;
-    checkIfRadioIsPlaying();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final radioStations = getRadioStations();
+      setState(() {
+        stationTitle = radioStations[currentStationIndex]['title']!;
+      });
+      checkIfRadioIsPlaying();
+    });
   }
 
   void checkIfRadioIsPlaying() async {
@@ -51,51 +58,35 @@ class _RadioTabState extends State<RadioTab> {
     });
   }
 
-  bool isProcessing = false;
-
-  void toggleRadio() async {
-    if (isProcessing) return;
-    isProcessing = true;
-
+  void toggleRadio() {
+    final radioStations = getRadioStations();
     if (isPlaying) {
-      await radio.stop();
-      setState(() {
-        isPlaying = false;
-      });
+      isPlaying = false;
+      radio.play(radioStations[currentStationIndex]['url']!);
     } else {
-      await radio.play(radioStations[currentStationIndex]['url']!);
-      setState(() {
-        isPlaying = true;
-        stationTitle = radioStations[currentStationIndex]['title']!;
-      });
+      isPlaying = true;
+      radio.stop();
+    }
+    stationTitle = radioStations[currentStationIndex]['title']!;
+    setState(() {});
     }
 
-    isProcessing = false;
-  }
-
   void nextRadio() async {
+    final radioStations = getRadioStations();
     await radio.stop();
-    setState(() {
-      currentStationIndex = (currentStationIndex + 1) % radioStations.length;
-      stationTitle = radioStations[currentStationIndex]['title']!;
-    });
+    currentStationIndex = (currentStationIndex + 1) % radioStations.length;
+    stationTitle = radioStations[currentStationIndex]['title']!;
+    setState(() {});
     await radio.play(radioStations[currentStationIndex]['url']!);
-    setState(() {
-      isPlaying = true;
-    });
   }
 
   void prevRadio() async {
+    final radioStations = getRadioStations();
     await radio.stop();
-    setState(() {
-      currentStationIndex =
-          (currentStationIndex - 1 + radioStations.length) % radioStations.length;
-      stationTitle = radioStations[currentStationIndex]['title']!;
-    });
+    currentStationIndex = (currentStationIndex - 1 + radioStations.length) % radioStations.length;
+    stationTitle = radioStations[currentStationIndex]['title']!;
+    setState(() {});
     await radio.play(radioStations[currentStationIndex]['url']!);
-    setState(() {
-      isPlaying = true;
-    });
   }
 
   @override
@@ -128,7 +119,7 @@ class _RadioTabState extends State<RadioTab> {
                       ),
                       IconButton(
                         icon: ImageIcon(
-                          !isPlaying
+                          isPlaying
                               ? AssetImage('assets/images/Icon metro-play.png')
                               : AssetImage(
                                 'assets/images/Icon metro-pause.png',
