@@ -8,7 +8,7 @@ class RadioPlayer {
 
   RadioPlayer._internal();
 
-  Future<void> play(String url) async {
+  play(String url) async {
     try {
       if (_player.playing) return; // Avoid reloading if already playing
       await _player.setUrl(url);
@@ -18,7 +18,7 @@ class RadioPlayer {
     }
   }
 
-  Future<void> stop() async {
+  stop() async {
     try {
       await _player.stop();
     } catch (e) {

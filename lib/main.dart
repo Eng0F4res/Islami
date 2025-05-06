@@ -6,23 +6,31 @@ import 'package:islami/Sora_detailz.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/providers/my_provider.dart';
+import 'package:islami/providers/radio_provider.dart';
+import 'package:islami/providers/sebha_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-main() {
+void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => MyProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SebhaProvider()),
+        ChangeNotifierProvider(create: (_) => RadioProvider()),
+        ChangeNotifierProvider(create: (_) => MyProvider()),
+      ],
       child: MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  late MyProvider pro;
 
   @override
   Widget build(BuildContext context) {
-    var pro = Provider.of<MyProvider>(context);
+    pro = Provider.of<MyProvider>(context);
+    getSharedPrefs();
     return MaterialApp(
       localizationsDelegates: [
         AppLocalizations.delegate,
@@ -46,6 +54,13 @@ class MyApp extends StatelessWidget {
       darkTheme: MyThemeData.darkTheme,
       themeMode: pro.modeApp,
     );
+  }
+  getSharedPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String lang = prefs.getString('language')??'ar';
+    String theme = prefs.getString('theme')??'light';
+    pro.changeLanguage(lang);
+    pro.changeTheme(theme=='light'?ThemeMode.light:ThemeMode.dark);
   }
 }
 

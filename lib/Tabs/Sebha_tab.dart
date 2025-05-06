@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/providers/my_provider.dart';
+import 'package:islami/providers/sebha_provider.dart';
 import 'package:provider/provider.dart';
 
 class SebhaTab extends StatefulWidget {
@@ -12,14 +13,18 @@ class SebhaTab extends StatefulWidget {
 }
 
 class _SebhaTabState extends State<SebhaTab> {
-  int count = 0;
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<SebhaProvider>(context, listen: false).loadSebhaCount();
+  }
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
+    var sebha = Provider.of<SebhaProvider>(context);
     bool isDark = pro.modeApp == ThemeMode.dark;
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
+    int count = sebha.sebhaCount;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -52,9 +57,7 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
           InkWell(
             onTap: () {
-              setState(() {
-                count = (count >= 99) ? 0 : count + 1;
-              });
+              sebha.incrementSebhaCount();
             },
             child: Container(
               decoration: BoxDecoration(
@@ -65,14 +68,14 @@ class _SebhaTabState extends State<SebhaTab> {
               width: 140,
               height: 50,
               child: Text(
-                tsbeh(),
+                tsbeh(count),
                 style: GoogleFonts.amiri(
                   color: isDark ? MyThemeData.Cblack : MyThemeData.Cwhite,
                 ),
               ),
             ),
           ),
-          if (tsbeh() == 'تمام المائة')
+          if (tsbeh(count) == 'تمام المائة')
             Container(
               padding: EdgeInsets.all(16),
               margin: EdgeInsets.only(top: 10),
@@ -94,10 +97,10 @@ class _SebhaTabState extends State<SebhaTab> {
       ),
     );
   }
-  String tsbeh() {
-    if (count < 33) return 'سبحان اللّه';
-    if (count < 66) return 'الحمد للّه';
-    if (count < 99) return 'اللّه اكبر';
+  String tsbeh(count1) {
+    if (count1 < 33) return 'سبحان اللّه';
+    if (count1 < 66) return 'الحمد للّه';
+    if (count1 < 99) return 'اللّه اكبر';
     return 'تمام المائة';
   }
 }
