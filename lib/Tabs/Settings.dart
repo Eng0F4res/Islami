@@ -32,7 +32,7 @@ class _settingsState extends State<settings> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(55),
-                border: Border.all(width: 2, color: isDark ? MyThemeData.Cbage : MyThemeData.Cyellow),
+                border: Border.all(width: 2, color: isDark ? MyThemeData.Cyellow : MyThemeData.Cbage),
               ),
               child: Row(
                 children: [
@@ -53,7 +53,7 @@ class _settingsState extends State<settings> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(55),
-                border: Border.all(width: 2, color: MyThemeData.Cbage),
+                border: Border.all(width: 2, color: isDark ? MyThemeData.Cyellow : MyThemeData.Cbage),
               ),
               child: Row(
                 children: [
