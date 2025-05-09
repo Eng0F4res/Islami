@@ -17,6 +17,7 @@ class _settingsState extends State<settings> {
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
+    bool isDark = pro.modeApp == ThemeMode.dark;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -31,7 +32,7 @@ class _settingsState extends State<settings> {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(55),
-                border: Border.all(width: 2, color: MyThemeData.Cbage),
+                border: Border.all(width: 2, color: isDark ? MyThemeData.Cbage : MyThemeData.Cyellow),
               ),
               child: Row(
                 children: [
