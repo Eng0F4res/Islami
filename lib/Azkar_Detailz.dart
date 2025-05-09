@@ -75,22 +75,27 @@ class _AzkarDetailzState extends State<AzkarDetailz> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Text(
-                          '${args.text}',
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.right,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.bodySmall?.copyWith(
-                            fontFamily: 'DecoTypeThuluth',
-                            fontWeight: FontWeight.w500,
-                            height: 1.8,
-                            color:
-                                isDark
-                                    ? MyThemeData.Cyellow
-                                    : MyThemeData.Cblack,
-                          ),
-                        ),
+                        child: ListView.builder(
+                            itemBuilder: (context, index){
+                              return Text(
+                                '${args.text}',
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.right,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.copyWith(
+                                  fontFamily: 'DecoTypeThuluth',
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.8,
+                                  color:
+                                  isDark
+                                      ? MyThemeData.Cyellow
+                                      : MyThemeData.Cblack,
+                                ),
+                              );
+                            },
+                          itemCount: 1,
+                        )
                       ),
                     ),
                     Padding(
