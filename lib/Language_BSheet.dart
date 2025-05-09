@@ -10,6 +10,7 @@ class LanBSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
+    bool isDark = pro.modeApp == ThemeMode.dark;
     return Container(
       padding: EdgeInsets.all(15),
       height: MediaQuery.of(context).size.height*.3,
@@ -29,7 +30,7 @@ class LanBSheet extends StatelessWidget {
             ),
           ),
           SizedBox(height: 5),
-          Divider(color: MyThemeData.Cbage,indent: 80,endIndent: 80,),
+          Divider(color: isDark ? MyThemeData.Cyellow : MyThemeData.Cbage,indent: 80,endIndent: 80,),
           InkWell(
             onTap: (){
               pro.changeLanguage('ar');
