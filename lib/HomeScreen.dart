@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/My_Theme_Data.dart';
 import 'package:islami/Tabs/Ahadith_tab.dart';
+import 'package:islami/Tabs/Azkar_tab.dart';
 import 'package:islami/Tabs/Quran_tab.dart';
 import 'package:islami/Tabs/Radio_tab.dart';
 import 'package:islami/Tabs/Sebha_tab.dart';
@@ -17,8 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentTab = 3;
-  List<Widget> Tabs = [RadioTab(), SebhaTab(), AhadithTab(), QuranTab(),settings()];
+  int currentTab = 4;
+  List<Widget> Tabs = [RadioTab(), SebhaTab(), AzkarTab(), AhadithTab(), QuranTab(),settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage("assets/images/sebha_icon.png")),
                 label: AppLocalizations.of(context)!.sbha,
+                backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
+              ), //sbha
+              BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage("assets/images/Azkar_icon.png")),
+                label: 'Azkar',
                 backgroundColor: isDark ? MyThemeData.Cblue : MyThemeData.Cbage,
               ), //sbha
               BottomNavigationBarItem(

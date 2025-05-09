@@ -25,7 +25,10 @@ class _AhadithTabState extends State<AhadithTab> {
         children: [
           Image.asset('assets/images/ahadeth_image.png'),
           Divider(thickness: 3),
-          Text(AppLocalizations.of(context)!.ahadith, style: Theme.of(context).textTheme.bodyMedium),
+          Text(
+            AppLocalizations.of(context)!.ahadith,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
           Divider(thickness: 3),
           Expanded(
             child: ListView.separated(
@@ -48,11 +51,7 @@ class _AhadithTabState extends State<AhadithTab> {
                 );
               },
               separatorBuilder: (context, index) {
-                return Divider(
-                  thickness: 2,
-                  endIndent: 60,
-                  indent: 60,
-                );
+                return Divider(thickness: 2, endIndent: 60, indent: 60);
               },
               itemCount: allahadith.length,
             ),

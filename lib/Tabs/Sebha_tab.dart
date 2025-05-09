@@ -23,15 +23,39 @@ class _SebhaTabState extends State<SebhaTab> {
     var pro = Provider.of<MyProvider>(context);
     var sebha = Provider.of<SebhaProvider>(context);
     bool isDark = pro.modeApp == ThemeMode.dark;
-    double screenHeight = MediaQuery.of(context).size.height;
     int count = sebha.sebhaCount;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset(
-            pro.changeSebha(),
-            height: screenHeight * 0.3,
+          InkWell(
+            child: Stack(
+                alignment: Alignment.center,
+                children: [
+                Image.asset(
+                  pro.changeSebha(),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 70),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  alignment: Alignment.center,
+                  width: 140,
+                  height: 60,
+                  child: Text(
+                    tsbeh(count),
+                    style: GoogleFonts.amiri(
+                      color: isDark ? MyThemeData.Cwhite : MyThemeData.Cblack,
+                    ),
+                  ),
+                ),
+              ]
+            ),
+            onTap: () {
+              sebha.incrementSebhaCount();
+            },
           ),
           Text(
             AppLocalizations.of(context)!.tsbeh,
@@ -55,26 +79,6 @@ class _SebhaTabState extends State<SebhaTab> {
               ),
             ),
           ),
-          InkWell(
-            onTap: () {
-              sebha.incrementSebhaCount();
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: isDark ? MyThemeData.Cyellow : MyThemeData.Cbage,
-                borderRadius: BorderRadius.circular(50),
-              ),
-              alignment: Alignment.center,
-              width: 140,
-              height: 50,
-              child: Text(
-                tsbeh(count),
-                style: GoogleFonts.amiri(
-                  color: isDark ? MyThemeData.Cblack : MyThemeData.Cwhite,
-                ),
-              ),
-            ),
-          ),
           if (tsbeh(count) == 'تمام المائة')
             Container(
               padding: EdgeInsets.all(16),
@@ -91,8 +95,6 @@ class _SebhaTabState extends State<SebhaTab> {
                 ),
               ),
             )
-          else
-            SizedBox(height: screenHeight * 0.2),
         ],
       ),
     );
